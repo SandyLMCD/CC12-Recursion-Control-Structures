@@ -1,0 +1,58 @@
+package pack;
+import java.util.Scanner;
+
+public class LUMACAD_pascalTriangle {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+
+		System.out.print("Enter no. of lines: ");
+		int numLines = sc.nextInt();
+
+		System.out.println(" ");
+		
+		System.out.println("Printed pascal triangle: ");
+		System.out.println(" ");
+		paschalTriangleMethod(numLines, 0);
+
+		sc.close();
+	}
+
+	public static void paschalTriangleMethod(int numLines, int currentLine) {
+
+		//Purpose: To prevent printing rows the same x number of numLines from user input
+		int utility = numLines - 1;
+		
+
+		//Printing of rows 
+		for (int rowsIndex = 1 ; rowsIndex <= numLines - utility; rowsIndex++) {
+
+			//Printing of spaces before the printing of numbers
+			for (int s = numLines - currentLine ; s > 0 ; s--) {
+				System.out.print(" ");
+				//spaces--;
+			}
+
+			//Purpose: Every row is going to start with 1
+			int number = 1;
+			
+			//Printing of numbers of numbers = currentLine,
+			//Example: Line 3 (currentLine) will contain 3 numbers (numNums)
+			//includes calculation for next number in the currentLine
+			for (int numNums = 0 ; numNums <= currentLine ; numNums++) {
+				System.out.print(number + " ");
+				number = number * (currentLine - numNums) / (numNums + 1); 
+			}
+			
+			System.out.println();
+
+		}
+		
+		if (currentLine < numLines - 1) {
+			paschalTriangleMethod(numLines, currentLine + 1);
+		}
+		
+	}
+
+}
