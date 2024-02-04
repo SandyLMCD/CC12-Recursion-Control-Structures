@@ -1,0 +1,63 @@
+package pack;
+import java.util.Scanner;
+
+public class LUMACAD_palindromeChecker {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("Enter a string: ");
+		String str = sc.nextLine();
+		
+		//Purpose: Removes white spaces in the string input (race car would become racecar)
+		str = str.replaceAll("\\s", "");
+
+		//Printing of input string
+		System.out.println("\nInput string: " + str);
+		
+		boolean isPalindrome = isPalindrome(0, str.length() - 1, str);
+		
+		//Printing of reversed string, calls a method to do the reversing
+		System.out.println("Reversed string: " + reverseString(str));
+		
+		//Control structure to print a string if user input is a palindrome
+		if (isPalindrome) {
+			System.out.println("\nThe string is a palindrome!");
+		} else {
+			System.out.println("\nThe string is not a palindrome!");
+		}
+
+		sc.close();
+	}
+
+	public static boolean isPalindrome(int forwardP, int backwardP, String str) {
+		
+		if (forwardP >= backwardP) {
+			return true;
+		}
+
+		if (str.charAt(forwardP) != str.charAt(backwardP)) {
+			return false;
+		} else {
+			forwardP += 1;
+			backwardP -= 1;
+			return isPalindrome(forwardP, backwardP, str);
+		}
+
+	}
+	
+	public static String reverseString(String str) {
+		
+		//Purpose: We use StringBuilder to reverse the input string
+		//StringBuilder has the .reverse() method, which we are going to use
+		//StringBuilder reversedStr = new StringBuilder(str).reverse();
+		StringBuilder reversedStr = new StringBuilder(str).reverse();
+		
+		return reversedStr.toString();
+		
+	}
+
+}
+
+
