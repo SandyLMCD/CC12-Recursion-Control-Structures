@@ -1,0 +1,65 @@
+package pack;
+import java.util.Scanner;
+
+public class LUMACAD_fibbonaciPrimeOnly {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("How many prime numbers of the fibonacci sequence do you want to have? " );
+		int num = sc.nextInt();
+		
+		//Purpose: To store our fibonacci sequence into an array for prime number evaluation later
+		int[] fibonacciArray = new int[num];
+				
+		//Printing of prime numbers in the fibonacci sequence
+		System.out.println("\nHere's your fibonacci sequence that consists of " + num + " prime numbers: ");
+		
+		//i refers to the currentIndex of current number in array
+		//count refers to the prime numbers of the fibonacci
+		int i = 0, count = 0;
+		
+		//While loop is used as it will continue to generate numbers until it reaches specified number
+		while (count < num) {
+			int fibPrimeValue = printFibonacciSeq(i);
+			//If true, the number is prime and will be added to the prime fibonacci array
+			if (evaluateIfPrime(fibPrimeValue)) {
+				fibonacciArray[count] = fibPrimeValue;
+				System.out.print(fibonacciArray[count] + " ");
+				count++;
+			}
+			//i is incremented because we are moving on to the next number in the sequence
+			i++;
+		}		
+		
+		sc.close();
+		
+	}
+	
+	//Method to print fibonacci sequence depending on user input
+	public static int printFibonacciSeq(int num) {
+		
+		if (num <= 1) {
+			return num;
+		} else {
+			//Formula to calculate the second number
+			return printFibonacciSeq(num - 1) + printFibonacciSeq(num - 2);
+		}
+	}
+	
+	//Method to evaluate the fibonacci array and see if number is prime or not
+	public static boolean evaluateIfPrime(int num) {
+		if (num <= 1) {
+			return false;
+		}
+		
+		for (int i = 2 ; i <= Math.sqrt(num) ; i++) {
+			if (num % i == 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+}
