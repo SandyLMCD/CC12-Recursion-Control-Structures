@@ -32,6 +32,6 @@
 ### Vowel Counter:
 <li> Implement a recursive Java function named countVowelsRecursive to count the number of vowels (a, e, i, o, u) in a given string.
 <li> Create a Java class with a main method.</li>
-Define a recursive function countVowelsRecursive that takes a string as a parameter.
-Implement the recursive logic to count vowels in the string.
-Test the function with different strings containing vowels in the main method.
+<li> Define a recursive function countVowelsRecursive that takes a string as a parameter.</li>
+<li> Implement the recursive logic to count vowels in the string.</li>
+<li>Test the function with different strings containing vowels in the main method. </li>
